@@ -1,4 +1,5 @@
 //Filtra el string eliminando elmentos que contienen un _
+//Cuenta los elementos y los introduce en un objeto
 const carta = 'bici coche balón _playstation bici coche peluche'
 function listGifts(letter){
   const gifts = letter
@@ -21,3 +22,12 @@ function listGifts(letter){
   }, {});
   return obj*/
 }
+/*
+{
+  bici: 2,
+  coche: 2,
+  balón: 1,
+  peluche: 1
+}
+*/
+console.log(listGifts(carta));
