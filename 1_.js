@@ -12,6 +12,12 @@ const ovejas = [
     { name: 'Nnnnnnnn', color: 'rojo'}
   ]
 function contarOvejas(ovejas){
+  return ovejas.filter(({ name, color }) => {
+		const lowerCaseName = name.toLowerCase();
+		return color === ROJO && lowerCaseName.includes('n') && lowerCaseName.includes('a');
+	});
+
+
     ovejas = ovejas.filter((ovejas) => ovejas.color.includes('rojo'))
     const regex = /n[a-z]?a/gi;
     ovejas = ovejas.filter((ovejas) => ovejas.name.match(regex));
