@@ -59,18 +59,50 @@ function sayHi(n: string): string{
 - cantidad constante de trabajo
 - el número de pasos necesarios para completar el algoritmo no depende del tamaño
 
-## O(log N) example, tiempo logaritmico:
+## O(log N) example, tiempo logaritmico, binary search:
 ````typescript
+const arr = [0,1,2,3,4,5];
+function binarySearch(arr: number[], target: number): number {
+    let left = 0;
+    let right = arr.length - 1;
 
+    while (left <= right){
+        const mid = Math.floor((left + right) / 2);
+        const midValue = arr[mid];
+
+        if(midValue == target) {
+            return mid;
+        }
+
+        if(midValue < target){
+            left = mid + 1;
+        } else {
+            right = mid - 1;
+        }
+    }
+    return -1;
+}
 ````
+por cada interacción del bucle, el espacio de búsqueda se reduce a la mitad
+este proceso de división continua se realiza hasta que se reduce todo a un solo elemento
+o se encuentra el objetivo dado que el espacio de búsqueda se divide a la mitad en cada iteración,
+el número de iteraciones requeridas para alcanzar el elemento crece de forma algoritmica O(log N)
 
-
-
-## O(N) example:
+## O(N) linear example:
 ````typescript
-
+function suma(n: number): number {
+    let sum = 0;
+    for(let i = 0; i < n; i++){
+        sum += i;
+    }
+    return sum;
+}
 ````
+el algoritmo itera sobre todo el arreglo
+cantidad de trabajo ante cada iteración es constante
+a medida que aumenta el tamaño de nuestros elementos, la complejidad aumenta en la misma medida
 
+## O(N log N) example:
 ````typescript
 
 ````
