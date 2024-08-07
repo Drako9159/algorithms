@@ -127,7 +127,7 @@ function quickSort(arr: number[]): number[] {
 } 
 ````
 
-## 0(N^2) cuadratica
+## O(N^2) cuadratica
 ````typescript
 const arr = [5, 3, 8, 4, 2, 1, 9, 7, 6];
 
@@ -144,5 +144,52 @@ function bubbleSort(arr: number[]): number[] {
     return arr;
 }
 
-
 ````
+el ordenamiento buirbuja funciona repasando la lista repetidamente, compara elementos adyacentes y cambiando los que estan en orden diferente, en el pero de los casos, el arreglo está en orden inverso, el burbujeo necesitará N, en cada pasada va a necesitar N - 1 comparaciones e intercambios
+
+
+## O(2^N) tiempo exponencial
+````typescript
+function fibonacci(n: number): number {
+    if(n <= 1) { 
+        return n;
+    }
+    return fibonacci(n - 1) + fibonacci(n - 2);
+}
+````
+en cada llamada recursiva a la funcion fibonacci se realisa una vez dos llamadas adicionales n - 1 y n - 2, eso hace que se haga un crecimiento exponencial, cada nivel de recursion se bifurca en dos llamadas recursivas
+
+## 0(N!)
+````typescript
+const arr = [1, 2, 3];
+
+function permute(arr: number[]): number[][] {
+    if(arr.length <= 1) {
+        return [arr];
+    }
+    const result: number[][] = [];
+
+    for(let i = 0; i < arr.length; i++) {
+         const rest = arr.slice(0, 1).concat(arr.slice(i + 1));
+         const permutations = permute(rest);
+         for(const perm of permutations) {
+            result.push([arr[i], ...perm]);
+         }
+    }
+    return result;
+}
+````
+en cada llamada recursiva a la funcion permute, el algoritmo va a generar permutaciones seleccionando cada elemento del arreglo como primer elemento y luego generando recursivamente permutaciones de los elementos restantes, el número de permutaciones crece factorialmente con el tamaño del arreglo entrante, para cada elemento hay (N-1)! permutaciones de los elementos restantes, el número total de permutaciones es N * (N-1) * (N-2)... O(N!)
+
+
+## Complejidad
+
+Mejor VS Peor VS Promedio
+
+## Complejidad espacial
+
+- Big O Notation es la complejidad basada en la cantidad de pasos según el elemento de entrada
+
+- Espacial es la memoria basada en el tamaño de la entrada para poder ejecutar el algoritmo
+
+
