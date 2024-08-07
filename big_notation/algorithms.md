@@ -102,9 +102,29 @@ el algoritmo itera sobre todo el arreglo
 cantidad de trabajo ante cada iteración es constante
 a medida que aumenta el tamaño de nuestros elementos, la complejidad aumenta en la misma medida
 
-## O(N log N) example:
+## O(N log N) tiempo linealitmico example:
 ````typescript
+const arr = [5, 3, 8, 4, 2, 1, 9, 7, 6];
 
+function quickSort(arr: number[]): number[] {
+    if (arr.length <= 1) {
+        return arr;
+    }
+    const pivot = arr[arr.length - 1];
+
+    const left: number[] = [];
+    const right: number[] = [];
+
+    for (let i = 0; i < arr.length - 1; i++) {
+        if (arr[i] < pivot){
+            left.push(arr[i]);
+        } else {
+            right.push(arr[i])
+        }
+    }
+    return [...quickSort(left), pivot, ...quickSort(right)]
+
+} 
 ````
 
 ````typescript
