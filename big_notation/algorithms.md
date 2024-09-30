@@ -192,4 +192,24 @@ Mejor VS Peor VS Promedio
 
 - Espacial es la memoria basada en el tamaño de la entrada para poder ejecutar el algoritmo
 
+## Uso de memoria ejemplo
+````typescript
+function subArray(arr: number[]): number {
+    let sum = 0; // espacio utilizado por sum O(1)
+    for (let num of arr) { // espacio utilizado por la variable del bucle O(1)
+        sum += num; // espacio utilizado por la variable temporal O(1)
+    }
+    return sum; // espacio utilizado es O(1)
+}
 
+function cumulativeArray(arr: number[]): number[] {
+    let result = []; // espacio inicial es O(N)
+    let sum = 0; // espacio utilizado por sum O(1)
+
+    for(let num of arr) { // espacio utilizado por la variable del bucle 0(1)
+        sum += num; // espacio utilizado por la variable temporal O(1)
+        result.push(sum); // espacio a utilizar es O(N)
+    }
+    return result; // espacio utilizado es O(N)
+}
+````
